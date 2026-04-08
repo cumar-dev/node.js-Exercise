@@ -9,6 +9,18 @@ exports.getBooks = async(req, res)=> {
     }
 }
 
+// get one book
+
+exports.getInfoBooks = async(req, res)=> {
+    const {id} = req.params;
+    try {
+        const getInfoBooks = await books.findById(id);
+        res.json(getInfoBooks);
+    } catch (error) {
+         res.status(500).json({ message: error.message });
+    }
+}
+
 // create books
 
 exports.createBooks = async(req, res)=> {
